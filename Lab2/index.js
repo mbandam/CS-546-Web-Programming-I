@@ -8,6 +8,6 @@ for(let i = 2; i<= 11; i++) {
     printShape.printSquare(i);
 }
 
-for(let i = 2; i<= 22; i += 2) {
+for(let i = 2; i<= 20; i += 2) {
     printShape.printRhombus(i);
 }

@@ -1,0 +1,71 @@
+{{#if errorMessage }}
+    <div class="row" id="errorinfo">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="alert alert-danger" role="alert">
+                {{errorMessage}}
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+{{/if}}
+
+{{#if isSuccess }}
+    <div class="row" id="errorinfo">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="alert alert-success" role="alert">
+                Dear {{userName}} , your registration is complete !!
+                Please Login by clicking <a href="login">here</a>.
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+{{/if}}
+
+
+<div class="wrapper">
+    <form class="form-register" id="form-register" action="/register" method="post">
+        <h2 class="form-register-heading">Register</h2>
+
+        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required=""
+               autofocus="" oninvalid="this.setCustomValidity('Please enter valid email address.')"
+               oninput="setCustomValidity('')"/>
+
+        <label for="name" class="cols-sm-2 control-label">Your Name</label>
+
+        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" required autofocus
+               oninvalid="this.setCustomValidity('Please enter valid name.')" oninput="setCustomValidity('')"/>
+
+        <label for="date" class="cols-sm-2 control-label">Date of Birth (optional)</label>
+
+        <input type="date" class="form-control" name="date" id="date" placeholder="MM/DD/YYY"
+               oninvalid="this.setCustomValidity('Please enter valid date of birth.')"
+               oninput="setCustomValidity('')"/>
+
+        <label for="name" class="cols-sm-2 control-label">Address</label>
+
+        <input type="text" class="form-control" name="address" id="address" placeholder="Enter your Address" required autofocus
+               oninvalid="this.setCustomValidity('Please enter valid address.')" oninput="setCustomValidity('')"/>
+
+        <label for="password" class="cols-sm-2 control-label">Password</label>
+
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required=""
+               oninvalid="this.setCustomValidity('Please enter password.')" oninput="setCustomValidity('')"/>
+
+        <label for="confirm-password" class="cols-sm-2 control-label">Confirm Password</label>
+
+        <input type="password" class="form-control" id="confirm-password" name="confirm-password" required=""
+               placeholder="Confirm Password" oninvalid="this.setCustomValidity('Please enter confirm password same as password.')"
+               oninput="setCustomValidity('')"/>
+
+        <button class="btn btn-lg btn-primary btn-block" id="registerbutton" type="submit">Register</button>
+
+        <div class="login-register">
+            <a href="login">Alreadt a User ? Login from here </a>
+        </div>
+    </form>
+</div>
+

@@ -1,5 +1,6 @@
 const mongoCollections = require("../config/mongoCollections");
 const userRegistration = mongoCollections.userRegistration;
+const uuidv4 = require('uuid/v4');
 const bcrypt = require("bcrypt");
 const saltRounds = 16;
 
@@ -59,13 +60,22 @@ let exportedMethods = {
 
         // return callback(null, null);
     },
+    async getUserById(id, callback) {
+        if(!id) {
+            throw "Invalid data passed !!";
+        }
+
+        const userRegistrationCollection = await userRegistration();
+        const user = await userRegistrationCollection.findOne({ "_id": id });
+        return user;
+    },
     async findById(id, callback) {
         if(!id) {
             return callback(new Error('No id passed'));
         }
 
         return userRegistration().then((userRegistrationCollection) => {
-                return userRegistrationCollection.findOne({ "id": id }).then((user) => {
+                return userRegistrationCollection.findOne({ "_id": id }).then((user) => {
                     if (!user)
                         return callback(new Error('User ' + id + ' does not exist'));
 
@@ -99,6 +109,35 @@ let exportedMethods = {
         } catch (e) {
             // no op
         }
+    },
+    async registerUser(userRegistrationData) {
+        if(!userRegistrationData && !userRegistrationData.name
+            && !userRegistrationData.email && userRegistrationData.password
+            && !userRegistrationData.address) {
+            throw "Invalid data passed !!";
+        }
+
+        // get mongo collection
+        const userRegistrationCollection = await userRegistration();
+        let newUser = {};
+        newUser._id = uuidv4();
+        newUser.name = userRegistrationData.name;
+        if(userRegistrationData.dob) {
+            newUser.dob = new Date(userRegistrationData.dob);
+        }
+        newUser.userLogin = {};
+        newUser.userLogin._id = newUser._id;
+        newUser.userLogin.email = userRegistrationData.email;
+        newUser.userLogin.password = userRegistrationData.password;
+
+        const insertInfo = await userRegistrationCollection.insertOne(newUser);
+        if (insertInfo.insertedCount === 0) {
+            throw "Could not register user !! Please try again later !!";
+        }
+
+        const newId = insertInfo.insertedId;
+        const addedUsed = await this.getUserById(newId);
+        return addedUsed;
     }
 }
 

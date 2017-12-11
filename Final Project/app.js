@@ -16,24 +16,24 @@ passport.use(new LocalStrategy(
     {usernameField: 'email',passwordField: 'password'},
     async (username, password, callback) => {
 
-    await userData.findByUsername(username, async (err, user) => {
+        await userData.findByUsername(username, async (err, user) => {
 
-        if (err) { return callback(err); }
+            if (err) { return callback(err); }
 
-        if (!user) { return callback(null, false, { message: 'Incorrect username or password.' }); }
+            if (!user) { return callback(null, false, { message: 'Incorrect username or password.' }); }
 
-let isValidPassword = await userData.verifyPassword(user, password);
+            let isValidPassword = await userData.verifyPassword(user, password);
 
-if (isValidPassword === false) { return callback(null, false, { message: 'Incorrect username or password.' }); }
+            if (isValidPassword === false) { return callback(null, false, { message: 'Incorrect username or password.' }); }
 
-return callback(null, user);
-});
-}
+            return callback(null, user);
+        });
+    }
 ));
 
 // Configure Passport authenticated session persistence.
 passport.serializeUser(function(user, callback) {
-    callback(null, user.id);
+    callback(null, user._id);
 });
 
 passport.deserializeUser(function(id, callback) {

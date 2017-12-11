@@ -4,42 +4,6 @@ const uuidv4 = require('uuid/v4');
 const bcrypt = require("bcrypt");
 const saltRounds = 16;
 
-const users = [
-    {
-        id: "1245325124124",
-        name: "Poonam Bhilare",
-        dob: "",
-        address: "25 River Dr South, Jersey City, NJ, 07302",
-        userLogin: {
-            email: "abc@gmail.com",
-            password: "abc123",
-            id: "1245325124124"
-        }
-    },
-    {
-        id: "1245325124125",
-        name: "Poonam Bhilare",
-        dob: "",
-        address: "25 River Dr South, Jersey City, NJ, 07302",
-        userLogin: {
-            email: "xyz@gmail.com",
-            password: "xyz123",
-            id: "1245325124125"
-        }
-    },
-    {
-        id: "1245325124127",
-        name: "Poonam Bhilare",
-        dob: "",
-        address: "25 River Dr South, Jersey City, NJ, 07302",
-        userLogin: {
-            email: "pqr@gmail.com",
-            password: "pqr123",
-            id: "1245325124127"
-        }
-    }
-]
-
 let exportedMethods = {
     async findByUsername(username, callback)  {
         if(!username) {

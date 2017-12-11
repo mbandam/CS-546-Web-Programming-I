@@ -5,6 +5,9 @@ const ensureLogIn = require('connect-ensure-login');
 const data = require("../data");
 const usersData = data.users;
 
+
+/* GET home page. */
+
 // LOGIN ROUTES
 // when user comes to the website send him to
 router.get('/login', (req, res) => {
@@ -15,6 +18,17 @@ router.get('/login', (req, res) => {
         res.render("login", { errorMessage: req.flash('error'), pageTitle: "Login"});
     }
 });
+
+
+//When user accesses the cart
+router.get('/cart', (req, res) => {
+    // if(req.user) {
+    //     res.redirect('/');
+    // } else {
+    //     res.render("main", { errorMessage: req.flash('error'), pageTitle: "Login"});
+    //  }
+    res.render("cart", { errorMessage: req.flash('error'), pageTitle: "Cart"});
+  }); 
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/' , successRedirect: '/home', failureFlash : true }),
     (req, res) => {}

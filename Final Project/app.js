@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 const exphbs = require("express-handlebars");
-const handlebarsInstance = exphbs.create({defaultLayout: "login-register"});
+const handlebarsInstance = exphbs.create({defaultLayout: "main"});
 
 const app = express();
 

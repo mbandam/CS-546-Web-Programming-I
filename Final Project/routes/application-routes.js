@@ -123,4 +123,9 @@ router.get('/home', ensureLogIn.ensureLoggedIn('/'),
         res.render('profile', { user: req.user });
     });
 
+//NEED TO TEST THIS - NESAR
+router.get('/submission', ensureLogIn.ensureLoggedIn('/login'),
+    (req, res) => {
+        res.render('submission', { user: req.user });
+    });
 module.exports = router;

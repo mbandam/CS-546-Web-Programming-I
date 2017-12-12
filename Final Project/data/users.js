@@ -24,7 +24,7 @@ let exportedMethods = {
 
         // return callback(null, null);
     },
-    async getUserById(id, callback) {
+    async getUserById(id) {
         if(!id) {
             throw "Invalid data passed !!";
         }

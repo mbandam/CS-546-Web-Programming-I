@@ -16,5 +16,6 @@ let getCollectionFn = (collection) => {
 
 module.exports = {
     userRegistration: getCollectionFn("userRegistration"),
-    orders: getCollectionFn("order")
+    orders: getCollectionFn("order"),
+    contactUs: getCollectionFn("contactUs")
 };

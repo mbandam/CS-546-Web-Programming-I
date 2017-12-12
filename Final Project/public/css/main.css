@@ -27,6 +27,7 @@ body {
 
 .form-signin .form-signin-heading,
 .form-register .form-register-heading,
+.form-contact .form-contact-heading,
 .form-signin .checkbox {
     margin-bottom: 10px;
 }
@@ -112,6 +113,13 @@ a {
   padding: 25px 0;
 }
 
+.form-contact{
+    max-width: 450px;
+    padding: 15px 35px 15px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 .order-history-card {
     background-color: white;

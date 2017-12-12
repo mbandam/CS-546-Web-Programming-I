@@ -77,7 +77,7 @@ let exportedMethods = {
             return false;
         }
         try {
-            console.log("password compare - " + user.userLogin.password + " and user entered is " + password );
+            // console.log("password compare - " + user.userLogin.password + " and user entered is " + password );
             // return (user.userLogin.password === password);
             return bcrypt.compareSync(password, user.userLogin.password)
             // return bcrypt.compare(password, user.hashedPassword);

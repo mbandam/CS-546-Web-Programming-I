@@ -10,17 +10,17 @@ var products = JSON.parse(fs.readFileSync('./data/products.json', 'utf8'));
 
 /* GET home page. */
 router.get('/', (req, res) => {
-    res.render("home", { errorMessage: req.flash('error'), pageTitle: "Home" });
+    res.render("home", { errorMessage: req.flash('error'), title: "Home" });
 });
 
 // Contact Us Page
 router.get('/contact', (req, res) => {
-    res.render("contact", { errorMessage: req.flash('error'), pageTitle: "Contact Us" });
+    res.render("contact", { errorMessage: req.flash('error'), title: "Contact Us" });
 });
 
 //Menu Page
 // router.get('/menu', (req, res) => {
-//     res.render("menu", { errorMessage: req.flash('error'), pageTitle: "Menu" });
+//     res.render("menu", { errorMessage: req.flash('error'), title: "Menu" });
 // });
 router.get('/menu', function (req, res, next) {
     res.render('menu', 
@@ -38,7 +38,7 @@ router.get('/login', (req, res) => {
     if (req.user) {
         res.redirect('/home');
     } else {
-        res.render("login", { errorMessage: req.flash('error'), pageTitle: "Login" });
+        res.render("login", { errorMessage: req.flash('error'), title: "Login" });
     }
 });
 
@@ -48,9 +48,9 @@ router.get('/login', (req, res) => {
 //     // if(req.user) {
 //     //     res.redirect('/');
 //     // } else {
-//     //     res.render("main", { errorMessage: req.flash('error'), pageTitle: "Login"});
+//     //     res.render("main", { errorMessage: req.flash('error'), title: "Login"});
 //     //  }
-//     res.render("cart", { errorMessage: req.flash('error'), pageTitle: "Cart" });
+//     res.render("cart", { errorMessage: req.flash('error'), title: "Cart" });
 // });
 
 router.get('/add/:id', function(req, res, next) {
@@ -97,16 +97,16 @@ router.get('/register', (req, res) => {
     if (req.user) {
         res.redirect('/home');
     } else {
-        res.render("register", { errorMessage: req.flash('error'), pageTitle: "Register" });
+        res.render("register", { errorMessage: req.flash('error'), title: "Register" });
     }
 });
 
 router.post("/register", (req, res) => {
     usersData.registerUser(req.body).then((addedUser) => {
         if (addedUser)
-            res.render("register", { isSuccess: true, userName: addedUser.name, pageTitle: "Register" });
+            res.render("register", { isSuccess: true, userName: addedUser.name, title: "Register" });
         else
-            res.render("register", { errorMessage: "Error occurred registering user. Please try again later", pageTitle: "Register" });
+            res.render("register", { errorMessage: "Error occurred registering user. Please try again later", title: "Register" });
     }, (error) => {
         res.status(500).json({ message: `Operation failed, Error : ${error}` });
     });
@@ -124,7 +124,7 @@ router.get('/home', ensureLogIn.ensureLoggedIn('/'),
     });
 
 //NEED TO TEST THIS - NESAR
-router.get('/submission', ensureLogIn.ensureLoggedIn('/login'),
+router.get('/submission', ensureLogIn.ensureLoggedIn('/'),
     (req, res) => {
         res.render('submission', { user: req.user });
     });

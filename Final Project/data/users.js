@@ -33,6 +33,15 @@ let exportedMethods = {
         const user = await userRegistrationCollection.findOne({ "_id": id });
         return user;
     },
+    async getUserByEmailAddress(email) {
+        if(!email) {
+            throw "Invalid data passed !!";
+        }
+
+        const userRegistrationCollection = await userRegistration();
+        const user = await userRegistrationCollection.findOne({ "userLogin.email": email });
+        return user;
+    },
     async findById(id, callback) {
         if(!id) {
             return callback(new Error('No id passed'));
@@ -68,21 +77,29 @@ let exportedMethods = {
             return false;
         }
         try {
-            return (user.userLogin.password === password);
+            console.log("password compare - " + user.userLogin.password + " and user entered is " + password );
+            // return (user.userLogin.password === password);
+            return bcrypt.compareSync(password, user.userLogin.password)
             // return bcrypt.compare(password, user.hashedPassword);
         } catch (e) {
             // no op
         }
     },
     async registerUser(userRegistrationData) {
+
         if(!userRegistrationData && !userRegistrationData.name
             && !userRegistrationData.email && userRegistrationData.password
             && !userRegistrationData.address) {
             throw "Invalid data passed !!";
         }
 
-        // get mongo collection
+        const tempUser = await this.getUserByEmailAddress(userRegistrationData.email);
+        if ( tempUser ) {
+            throw "Account for "+userRegistrationData.email+" address already exists !!";
+        }
+
         const userRegistrationCollection = await userRegistration();
+
         let newUser = {};
         newUser._id = uuidv4();
         newUser.name = userRegistrationData.name;
@@ -92,8 +109,11 @@ let exportedMethods = {
         newUser.userLogin = {};
         newUser.userLogin._id = newUser._id;
         newUser.userLogin.email = userRegistrationData.email;
-        newUser.userLogin.password = userRegistrationData.password;
 
+        var hash = bcrypt.hashSync(userRegistrationData.password, saltRounds);
+        newUser.userLogin.password = hash;
+
+        // newUser.userLogin.password = userRegistrationData.password;
         const insertInfo = await userRegistrationCollection.insertOne(newUser);
         if (insertInfo.insertedCount === 0) {
             throw "Could not register user !! Please try again later !!";

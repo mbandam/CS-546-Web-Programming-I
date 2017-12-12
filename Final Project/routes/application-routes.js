@@ -4,6 +4,7 @@ const router = express.Router();
 const ensureLogIn = require('connect-ensure-login');
 const data = require("../data");
 const usersData = data.users;
+const usersContact = data.contact;
 var fs = require('fs');
 var Cart = require('../models/cart');
 var products = JSON.parse(fs.readFileSync('./data/products.json', 'utf8'));
@@ -129,3 +130,14 @@ router.get('/submission', ensureLogIn.ensureLoggedIn('/'),
         res.render('submission', { user: req.user });
     });
 module.exports = router;
+
+router.post("/contact", (req, res) => {
+    usersContact.userContacting(req.body).then((addedMessage) => {
+        if (addedMessage)
+            res.render("contact", { isSuccess: true, userName: addedMessage.name, title: "contact" });
+        else
+            res.render("contact", { errorMessage: "Error occurred submitting message. Please try again later", title: "contact" });
+    }, (error) => {
+        res.status(500).json({ message: `Operation failed, Error : ${error}` });
+    });
+});

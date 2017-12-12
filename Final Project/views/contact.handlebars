@@ -1,5 +1,49 @@
+{{#if errorMessage }}
+    <div class="row" id="errorinfo">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="alert alert-danger" role="alert">
+                {{errorMessage}}
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+{{/if}}
 
-<div>
-  <h3>Contact Us! Empty :( </h3>
-  <p></p>
+{{#if isSuccess }}
+    <div class="row" id="errorinfo">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="alert alert-success" role="alert">
+                Your message has been submitted!!
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+{{/if}}
+
+
+<div class="wrapper">
+    <form class="form-contact" id="form-contact" action="/contact" method="post">
+        <h2 class="form-contact-heading">Contact Us</h2>
+
+        <label for="name" class="cols-sm-2 control-label">Your Name</label>
+
+        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" required autofocus
+               oninvalid="this.setCustomValidity('Please enter valid name.')" oninput="setCustomValidity('')"/>
+
+        <label for="email" class="cols-sm-2 control-label">Your Email</label>
+
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required=""
+               autofocus="" oninvalid="this.setCustomValidity('Please enter valid email address.')"
+               oninput="setCustomValidity('')"/>
+
+        <label for="name" class="cols-sm-2 control-label">Message</label>
+
+        <input type="text" class="form-control" name="message" id="message" placeholder="Enter your message" required autofocus
+               oninvalid="this.setCustomValidity('Please enter valid message.')" oninput="setCustomValidity('')"/>
+
+        <button class="btn btn-lg btn-primary btn-block" id="submitbutton" type="submit">Submit</button>
+    </form>
 </div>
+

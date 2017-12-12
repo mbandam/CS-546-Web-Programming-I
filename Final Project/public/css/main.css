@@ -113,3 +113,47 @@ a {
 }
 
 
+.order-history-card {
+    background-color: white;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.order-number {
+    color: #2b8282;
+}
+
+.order-date {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.order-history-card h4 {
+    font-weight: 700;
+}
+
+.order-lineItem-first {
+    border-top: 1px solid #cacaca;
+}
+
+.order-lineItem {
+    border-bottom: 1px solid #cacaca;
+}
+
+.account-card-fulfilled, .account-card-openOrder {
+    padding-top: 20px;
+}
+
+.account-order-history {
+    position: relative;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.account-orderHistory-card {
+    background-color: white;
+    box-sizing: border-box;
+}

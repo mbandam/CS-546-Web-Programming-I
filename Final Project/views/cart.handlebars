@@ -25,8 +25,12 @@
         <strong>Total: ${{ totalPrice }}</strong>
     </div>
     <hr>
+    <form class="text-right" action="/action_page.php" method="get">
+  <input type="checkbox" name="delivery" value="delivery"> Delivery <br>
+  <input type="checkbox" name="pickup" value="pickup" checked> Pick up <br>
+</form>
     <div class="text-right">
-        <a href="#" type="button" class="btn btn-success">Checkout</a>
+        <a href="/submission" type="button" class="btn btn-success">Checkout</a>
     </div>
 {{ else }}
     Your shopping cart is empty.

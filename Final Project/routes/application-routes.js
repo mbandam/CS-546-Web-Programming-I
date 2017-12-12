@@ -4,7 +4,9 @@ const router = express.Router();
 const ensureLogIn = require('connect-ensure-login');
 const data = require("../data");
 const usersData = data.users;
-
+var fs = require('fs');
+var Cart = require('../models/cart');
+var products = JSON.parse(fs.readFileSync('./data/products.json', 'utf8'));
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -17,9 +19,17 @@ router.get('/contact', (req, res) => {
 });
 
 //Menu Page
-router.get('/menu', (req, res) => {
-    res.render("menu", { errorMessage: req.flash('error'), pageTitle: "Menu" });
-});
+// router.get('/menu', (req, res) => {
+//     res.render("menu", { errorMessage: req.flash('error'), pageTitle: "Menu" });
+// });
+router.get('/menu', function (req, res, next) {
+    res.render('menu', 
+    { 
+      title: 'Atilla\'s Menu',
+      products: products
+    }
+    );
+  });
 
 // LOGIN ROUTES
 // when user comes to the website send him to
@@ -34,14 +44,48 @@ router.get('/login', (req, res) => {
 
 
 //When user accesses the cart
-router.get('/cart', (req, res) => {
-    // if(req.user) {
-    //     res.redirect('/');
-    // } else {
-    //     res.render("main", { errorMessage: req.flash('error'), pageTitle: "Login"});
-    //  }
-    res.render("cart", { errorMessage: req.flash('error'), pageTitle: "Cart" });
-});
+// router.get('/cart', (req, res) => {
+//     // if(req.user) {
+//     //     res.redirect('/');
+//     // } else {
+//     //     res.render("main", { errorMessage: req.flash('error'), pageTitle: "Login"});
+//     //  }
+//     res.render("cart", { errorMessage: req.flash('error'), pageTitle: "Cart" });
+// });
+
+router.get('/add/:id', function(req, res, next) {
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+    var product = products.filter(function(item) {
+      return item.id == productId;
+    });
+    cart.add(product[0], productId);
+    req.session.cart = cart;
+    res.redirect('/menu');
+  });
+  
+  router.get('/cart', function(req, res, next) {
+    if (!req.session.cart) {
+      return res.render('cart', {
+        products: null
+      });
+    }
+    var cart = new Cart(req.session.cart);
+    res.render('cart', {
+      title: 'Your Cart',
+      products: cart.getItems(),
+      totalPrice: cart.totalPrice
+    });
+  });
+  
+  router.get('/remove/:id', function(req, res, next) {
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {});
+  
+    cart.remove(productId);
+    req.session.cart = cart;
+    res.redirect('/cart');
+  });
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/', successRedirect: '/home', failureFlash: true }),
     (req, res) => { }

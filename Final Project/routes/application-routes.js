@@ -61,7 +61,7 @@ router.get('/add/:id', function(req, res, next) {
     res.redirect('/menu');
   });
   
-  router.get('/cart', function(req, res, next) {
+  router.get('/cart', ensureLogIn.ensureLoggedIn('/'), function(req, res, next) {
     if (!req.session.cart) {
       return res.render('cart', {
         products: null, user: req.user

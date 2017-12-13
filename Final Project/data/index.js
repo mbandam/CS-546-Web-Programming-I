@@ -1,7 +1,9 @@
 const users = require("./users");
 const contact = require("./contact");
+const orders = require("./orders");
 
 module.exports = {
     users: users,
-    contact: contact
+    contact: contact,
+    orders: orders
 };

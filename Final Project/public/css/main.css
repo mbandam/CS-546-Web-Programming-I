@@ -1,5 +1,6 @@
 body {
     background: #eee !important;
+    /* background-image: url(https://bhubaneswarlive.com/wp-content/uploads/2016/11/Savin-NY-Website-Background-Web.jpg); */
     padding-top: 40px;
     padding-bottom: 40px;
 }
@@ -166,3 +167,31 @@ a {
     background-color: white;
     box-sizing: border-box;
 }
+
+.home_images {
+    height: 80%;
+    width: 120%;
+}
+
+/* .home_texts {
+    top: -200px;
+} */
+/* .carousel-inner{
+    width:100%;
+    max-height: 600px !important;
+  } */
+
+  .carousel-inner > .item > img {
+    width:100%;
+    height:550px;
+  }
+  
+  /* @media (min-width: 768px) {
+    .d-md-block {
+       display: block!important;
+       top: -800px;
+    }
+  }
+  .d-none {
+       display: none!important;
+  } */

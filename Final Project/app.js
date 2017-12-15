@@ -53,6 +53,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+//For cart adding notification
+app.use(function(req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
+
+
 // set views engine for handlebar templates
 app.engine("handlebars", handlebarsInstance.engine);
 app.set("view engine", "handlebars");

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Lentil Soup",
+    "description": "Lentil soup with garlic and coriander in it",
+    "price": 5
+  },
+  {
+    "id": 2,
+    "title": "Vegetable Samosa",
+    "description": "Stuffed pastry with potatoes & green peas[2 pc]",
+    "price": 5
+  },
+  {
+    "id": 3,
+    "title": "Onion Bhaji",
+    "description": "Crispy fried onion straw fritters",
+    "price": 5
+  },
+  {
+    "id": 4,
+    "title": "Chicken Curry",
+    "description": "Tender pieces of chicken in a traditional curry sause",
+    "price": 12.99
+  },
+  {
+    "id": 5,
+    "title": "Chicken Kadai",
+    "description": "Classic dish cooked with onions and bell peppers & tomato",
+    "price": 12.99
+  },
+  {
+    "id": 6,
+    "title": "Lamb Vindaloo (Spicy)",
+    "description": "Lamb with potatoes in a spicy vindaloo sause",
+    "price": 14.99
+  },
+  {
+    "id": 7,
+    "title": "Panner Tikka Masala",
+    "description": "Cheese cubes in a creamy tomato sause",
+    "price": 11.50
+  },
+  {
+    "id": 8,
+    "title": "Malai Kofta",
+    "description": "Vegetable dumplings in a creamy cashew nut sause",
+    "price": 12.00
+  },
+  {
+    "id": 9,
+    "title": "Dal Tadka (Vegan)",
+    "description": "Yellow lentils cooked with tomato, fried onions and spices",
+    "price": 10.99
+  },
+  {
+    "id": 10,
+    "title": "Mixed Grill",
+    "description": "An assortment of grilled chicken, lamb & seafood",
+    "price": 18.99
+  },
+  {
+    "id": 11,
+    "title": "Tandoori Shrimp",
+    "description": "Shrimp marinated in yogurt with herbs & spices",
+    "price": 16.99
+  },
+  {
+    "id": 12,
+    "title": "Lamb Boti kabab",
+    "description": "Diced lamb marinated in yogurt & spices",
+    "price": 14.99
+  },
+  {
+    "id": 13,
+    "title": "Ras Malai",
+    "description": "Cheese patties in cardamom flavored sweetened milk",
+    "price": 4.50
+  },
+  {
+    "id": 14,
+    "title": "Gulab Jamun",
+    "description": "Homemade sweet milk dumplings",
+    "price": 4.50
+  },
+  {
+    "id": 15,
+    "title": "Mango Lassi",
+    "description": "Mango & yogurt smoothie",
+    "price": 5.00
+  }
+]

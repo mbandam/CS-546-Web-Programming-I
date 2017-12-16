@@ -1,0 +1,100 @@
+{
+    "menu":
+    [
+        {
+            "items": "Appetizers",
+            "subItems": [
+                {
+                    "itemName": "Lentil Soup",
+                    "description": "Lentil soup with garlic and coriander in it",
+                    "price": 5
+                },
+                {
+                    "itemName": "Vegetable Samosa",
+                    "description": "Stuffed pastry with potatoes & green peas[2 pc]",
+                    "price": 5
+                },
+                {
+                    "itemName": "Onion Bhaji",
+                    "description": "Crispy fried onion straw fritters",
+                    "price": 5
+                }
+            ]
+        },
+        {
+            "items": "Non Vegetarian",
+            "subItems": [
+                {
+                    "itemName": "Chicken Curry",
+                    "description": "Tender pieces of chicken in a traditional curry sause",
+                    "price": 12.99
+                },
+                {
+                    "itemName": "Chicken Kadai",
+                    "description": "Classic dish cooked with onions and bell peppers & tomato",
+                    "price": 12.99
+                },
+                {
+                    "itemName": "Lamb Vindaloo (Spicy)",
+                    "description": "Lamb with potatoes in a spicy vindaloo sause",
+                    "price": 14.99
+                },
+                {
+                    "itemName": "Mixed Grill",
+                    "description": "An assortment of grilled chicken, lamb & seafood",
+                    "price": 18.99
+                },
+                {
+                    "itemName": "Tandoori Shrimp",
+                    "description": "Shrimp marinated in yogurt with herbs & spices",
+                    "price": 16.99
+                },
+                {
+                    "itemName": "Lamb Boti kabab",
+                    "description": "Diced lamb marinated in yogurt & spices",
+                    "price": 14.99
+                }
+            ]
+        },
+        {
+            "items": "Vegetarian",
+            "subItems": [
+                {
+                    "itemName": "Panner Tikka Masala",
+                    "description": "Cheese cubes in a creamy tomato sause",
+                    "price": 11.50
+                },
+                {
+                    "itemName": "Malai Kofta",
+                    "description": "Vegetable dumplings in a creamy cashew nut sause",
+                    "price": 12.00
+                },
+                {
+                    "itemName": "Dal Tadka (Vegan)",
+                    "description": "Yellow lentils cooked with tomato, fried onions and spices",
+                    "price": 10.99
+                }
+            ]
+        },
+        {
+            "items": "Dessert",
+            "subItems": [
+                {
+                    "itemName": "Ras Malai",
+                    "description": "Cheese patties in cardamom flavored sweetened milk",
+                    "price": 4.50
+                },
+                {
+                    "itemName": "Gulab Jamun",
+                    "description": "Homemade sweet milk dumplings",
+                    "price": 4.50
+                },
+                {
+                    "itemName": "Mango Lassi",
+                    "description": "Mango & yogurt smoothie",
+                    "price": 5.00
+                }
+            ]
+        }
+    ]
+}
